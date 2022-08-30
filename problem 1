@@ -1,6 +1,6 @@
-// Problem 1: 
-// Write a function that takes an array of integers, and finds the pair of adjacent elements that has the largest product and return that product.
+// Problem 1: Write a function that takes an array of integers, and finds the pair of adjacent elements that has the largest product and return that product.
 
+// Solution 1:
 function largestProduct([a, b, c, d]){
     if (a * b > b * c && a * b > c * d){
         console.log(a * b)
@@ -11,5 +11,24 @@ function largestProduct([a, b, c, d]){
     }
 }
 
-console.log(largestProduct([1, 3, 5, 8])); 
-// 40
+console.log(largestProduct([1, 3, 5, 8]));  // 40
+
+// Solution 2:
+const productArray = [];
+
+function largestProduct([a, b, c, d]){
+    const product1 = a * b; 
+    const product2 = b * c;
+    const product3 = c * d;
+    
+    productArray.push(product1, product2, product3);
+    console.log(productArray)
+    
+    productArray.sort((a,b) => b-a);
+    return(productArray[0]);
+}    
+console.log(largestProduct([5, 9, 10, 3])); // 90
+
+
+
+
