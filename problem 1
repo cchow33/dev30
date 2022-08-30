@@ -1,0 +1,15 @@
+// Problem 1: 
+// Write a function that takes an array of integers, and finds the pair of adjacent elements that has the largest product and return that product.
+
+function largestProduct([a, b, c, d]){
+    if (a * b > b * c && a * b > c * d){
+        console.log(a * b)
+    } else if (b * c > a * b && b * c > c * d){
+        console.log(b * c)
+    } else {
+        console.log(c * d)
+    }
+}
+
+console.log(largestProduct([1, 3, 5, 8])); 
+// 40
