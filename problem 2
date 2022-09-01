@@ -1,0 +1,31 @@
+const findHardestTest = (grades) => {
+  let numGrades = grades[Object.keys(grades)[0]].length;
+  let testAvgs = [];
+
+  for(let i = 0; i < numGrades; i++){
+    let testTotal = 0;
+    let totalPeople = 0;
+  
+  for (prop in grades){
+    totalPeople += 1;
+    testTotal += grades[prop][i];
+  };
+  testAvgs.push(Math.floor(testTotal / totalPeople));
+};
+
+  let hardestTest = Math.min(...testAvgs);
+  let hardestTestScore = testAvgs.indexOf(hardestTest) + 1;
+
+console.log('The average score of the hardest test was ' + hardestTest);
+console.log('The hardest test was test number ' + hardestTestScore)
+
+}
+
+let studentGrades = {
+  Ron: [90, 89, 99, 87, 100, 74],
+  Leslie: [78, 74, 92, 87, 77, 81],
+  Tom: [77, 61, 89, 47, 57, 83],
+  Andy: [35, 54, 44, 58, 39, 41]
+}
+
+findHardestTest(studentGrades);
