@@ -1,0 +1,50 @@
+// Imagine that you have two arrays, each with single letter strings in the arrays. Write some JavaScript to create a new array based on the overlapping items and the number of times the overlap occurs. 
+
+const array1 = ['a', 'b', 'c', 'a', 'a', 'b', 'd'];
+const array2 = ['a', 'b', 'b', 'a', 'e', 'c', 'c', 'g'];
+const array3 = [];
+let count1 = {};
+let count2 = {};
+
+// Step 1: Build objects that count number of properties for each array
+
+array1.forEach(function(item){
+  if (count1.hasOwnProperty(item)){
+    count1[item] += 1;
+  } else {
+    count1[item] = 1;
+  }
+}); // count1 = { a: 3, b: 2, c: 1, d: 1};
+
+array2.forEach(function(item){
+  if (count2.hasOwnProperty(item)){
+    count2[item] += 1;
+  } else {
+    count2[item] = 1;
+  }
+});  // count2 = {a: 2, b: 2, e: 1, c: 2, g: 1 }
+
+
+// Step 2: Create a double 'for ... in' loop through the objects
+
+for (prop1 in count1){
+  for (prop2 in count2){
+    // Step 3: Compare each property to see if there's an overlap
+    if (prop1 === prop2){
+      let frequency = Math.min(count1[prop1], count2[prop2]);
+  
+  // Step 4: Take the lowest value and push it into empty array as   many times as that value
+      for (let i = 0; i < frequency; i++){
+        array3.push(prop1);
+      }
+    } 
+  }
+}
+  console.log(array3)
+
+// Answer: ['a', 'a', 'c', 'b', 'b'];
+
+
+
+
+
