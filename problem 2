@@ -29,3 +29,82 @@ let studentGrades = {
 }
 
 findHardestTest(studentGrades);
+
+
+-----------------
+
+// Return the hardest test: 5
+let grades = {
+  Ron: [90, 89, 99, 87, 100, 74],
+  Leslie: [78, 74, 92, 87, 77, 81],
+  Tom: [77, 61, 89, 47, 57, 83],
+  Andy: [35, 54, 44, 58, 39, 41]
+}
+
+Object.keys(grades)  // all ['students']
+Object.keys(grades)[0]  // Ron
+Object.values(grades) // all numbers 
+
+// Step 1: Find the length of the array and loop through grades using a for loop
+
+let numGrades = grades[Object.keys(grades)[0]].length // 6
+let testAverages = [];
+
+for (let i = 0; i < numGrades; i++){
+  let testScores = 0;
+  let totalPeople = 0;
+
+// Step 2: Loop through object to get student grades for each test
+  for (let student in grades){
+  // console.log(i) // index 
+  // console.log(student); // student
+  // console.log(grades[student]); // all test scores
+  // console.log(grades[student][i]); //  test score 
+  
+  testScores += grades[student][i];
+  totalPeople += 1;
+    }
+// Get all the test scores for test 1, test 2, test 3, test 4  and divide each by the number of people
+  testAverages.push(Math.floor(testScores / totalPeople));
+  lowestScore = Math.min(...testAverages);
+}
+  console.log(testAverages);
+  console.log(lowestScore);
+  
+  let lowest = testAverages.indexOf(68) + 1
+  console.log(lowest)
+
+  console.log('The hardest test was test number ' + lowest + '.')
+  
+  ----------
+  
+  function findTest () {
+  let numGrades = grades[Object.keys(grades)[0]].length // 6
+  let testAverages = [];
+
+  for (let i = 0; i < numGrades; i++){
+    let testScores = 0;
+    let totalPeople = 0;
+
+    for (let student in grades){
+      testScores += grades[student][i];
+      totalPeople += 1;
+      }
+      testAverages.push(Math.floor(testScores / totalPeople));
+      lowestScore = Math.min(...testAverages);  
+    }
+      console.log(testAverages);
+      console.log(lowestScore);
+    
+      let lowest = testAverages.indexOf(68) + 1
+      console.log('The hardest test was test number ' + lowest + '.')
+}  
+    
+let grades = {
+  Ron: [90, 89, 99, 87, 100, 74],
+  Leslie: [78, 74, 92, 87, 77, 81],
+  Tom: [77, 61, 89, 47, 57, 83],
+  Andy: [35, 54, 44, 58, 39, 41]
+}
+
+findTest(grades)
